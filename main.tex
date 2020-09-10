@@ -1,0 +1,85 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{parskip}
+\usepackage{graphicx}
+
+% Margins
+\usepackage[top=2.5cm, left=3cm, right=3cm, bottom=4.0cm]{geometry}
+% Colour table cells
+\usepackage[table]{xcolor}
+
+% Get larger line spacing in table
+\newcommand{\tablespace}{\\[1.25mm]}
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\tstrut{\rule{0pt}{2.0ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
+
+%%%%%%%%%%%%%%%%%
+%     Title     %
+%%%%%%%%%%%%%%%%%
+\title{EE2101 \\ Assignment-1}
+\author{Kota Pranav Kumar \\ EE19BTECH11051}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%
+%   Problem 1   %
+%%%%%%%%%%%%%%%%%
+\section{Problem }
+For the translational mechanical system with a nonlinear spring shown in the following figure,find the transfer function, $G(s) = X(s)/F(s)$ ,for small excursions around $f(t) = 1$.The spring is defined by $ x_s(t) =1 - e^-^\(f_s(t)\) $, where   $x_s(t)$ is the spring displacement and $f_s(t)$ is the spring force.
+
+\includegraphics[width=10cm]{a.png}
+\section{Solution}
+Given: Small excursions around f(t) = 1\\ \\
+Let $ x(t) = x_o + \delta x$ and  $ f(t) = 1 + \delta f$ , where $x_0$ is the point where $f(t) =1$\\
+
+We know that   \(x(t) = x_s(t) =1 - e^-^\(f_s(t)\)\)\\
+\implies $f_s(t)$ = -ln(1 - $x(t)$) \\ \\
+As excursions are small,let us linearise the above force expression.\\
+ln(1 - $x(t)$) - ln(1 - $x_o$) = $-\delta x/1-x_o$\\
+i.e. ln(1 - $x(t)$) = ln(1 - $x_o$) - $\delta x/1-x_o$\\ \\ 
+At $f(t)$ = 1, $x = x_o$\\
+\implies $x_o$ =$ 1 - e^-^1 = 1 - 0.3678 = 0.6321$\\ 
+\implies ln(1 - $x(t)$) = 1 - \delta x/0.3678 = 1 + 2.7188\delta x
+
+\newline\\
+Force due to piston , $f_p(t) = \frac{dx}{dt}$ \\
+\implies $f_p(t)$ = $\frac{d(x_0 +\delta x)}{dt} $ = $\frac{d\delta x}{dt}$\\ 
+Applying Newtons Second Law to the system, we get\\
+\[f(t) - f_s(t) -f_p(t) = m\frac{d^2x}{dt^2} =m\frac{d^2(x_o + \delta x)}{dt^2} = m\frac{d^2\delta x}{dt^2}\]
+\[\implies 1 + \delta f  -1 - 2.7188\delta x - \frac{d\delta x}{dt} = \frac{d^2\delta x}{dt^2} \]
+\[\implies \frac{d^2\delta x}{dt^2} + \frac{d\delta x}{dt} +2.7188\delta x = \delta f   \]
+$\mathcal{L}\delta x  = X(s)$\\ \\
+$\mathcal{L}{\frac{d\delta x}{dt}} = sX(s) -\delta x(0) = sX(s)$\\ \\ 
+$\mathcal{L}{{\frac{d^2\delta x}{dt^2} }}  = s^2X(s) - s\delta x(0) -\delta x'(0) =s^2X (s)$\\ \\
+$\mathcal{L}\delta f = F(s)$\\\\
+
+
+
+Applying Laplace transform to both the sides,we get
+\[s^2X(s) +sX(s) +2.7188X(s) = F(s)\]
+\[\implies X(s)/F(s) = 1/(s^2 +s + 2.7188) \]
+
+\[\therefore G(s) =X(s)/F(s) = 1/(s^2 +s +2.7188)\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
